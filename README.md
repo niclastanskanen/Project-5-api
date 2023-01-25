@@ -1,108 +1,203 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Snap Tap App API :desktop_computer:
 
-Welcome niclastanskanen,
+## The Live link can be found here -> [Snap Tap App API](https://snaptapapp-api.herokuapp.com/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+### Frontend Project Links
 
-## Gitpod Reminders
+- [Frontend - Repository](https://github.com/niclastanskanen/project-5-react)
+- [Frontend - Deployment](https://snaptapapp.herokuapp.com/)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+<hr>
 
-`python3 -m http.server`
+## Table of Contents
 
-A blue button should appear to click: _Make Public_,
+- [Database Schema](#database-schema)
+- [Testing](#testing)
+- [Technologies Used](#technologies-used)
+  - [Languages and Frameworks Used](#languages-and-frameworks-used)
+  - [Python Modules Used](#python-modules-used)
+  - [Packages Used](#packages-used)
+  - [Programs and Tools Used](#programs-and-tools-used)
+- [Deployment](#deployment)
+  - [Forking the GitHub Repository](#forking-the-github-repository)
+  - [Making a Local Clone](#making-a-local-clone)
+  - [Deploying with Heroku](#deploying-with-heroku)
+- [Credits](#credits)
+  - [Online resources](#online-resources)
+  - [Code](#code)
+  - [Acknowledgments](#acknowledgments)
 
-Another blue button should appear to click: _Open Browser_.
+<hr>
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Database Schema
 
-A blue button should appear to click: _Make Public_,
+![Database](docs/database-schema.png)
 
-Another blue button should appear to click: _Open Browser_.
+## Testing
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+<details><summary>Manual Testing</summary>
 
-To log into the Heroku toolbelt CLI:
+## Manual Testing
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+As part of the API development, manual testing was performed to ensure that features worked as intended. It involved visiting each URL to ensure accurate results were returned, creating, updating, and deleting items as appropriate:
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+| URL | Passed |
+|---|---|
+| root | :white_check_mark: |
+| /profiles/ | :white_check_mark: |
+| /profiles/\<id>/ | :white_check_mark: |
+| /posts/ | :white_check_mark: |
+| /posts/\<id>/ | :white_check_mark: |
+| /comments/ | :white_check_mark: |
+| /comments/\<id>/ | :white_check_mark: |
+| /likes/ | :white_check_mark: |
+| /likes/\<id>/ | :white_check_mark: |
+| /followers/ | :white_check_mark: |
+| /followers/\<id>/ | :white_check_mark: |
 
-------
+## Code Validation
 
-## Release History
+The `pycodestyle` package was used to validate the project against the PEP8 Style Convention during development. No validation errors were found in the final deployed when validating files that were **not** automatically generated (e.g. validation excludes the 'settings.py' file and migration files).
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+</details>
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+<hr>
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Technologies Used
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Languages and Frameworks Used
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+- [Python](https://www.python.org/)
+- [Django](https://pypi.org/project/Django/3.2.14/)
+- [Django-REST-framework](https://www.django-rest-framework.org/) - Toolkit for building web API's with Django.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Python Modules Used
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+- Built-in Packages/Modules
+  - [os](https://docs.python.org/3/library/os.html) - This module provides a portable way of using operating system dependent functionality.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### Packages Used
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- External Python Packages
+  - [cloudinary](https://pypi.org/project/cloudinary/) - Cloudinary intergration.
+  - [django-cloudinary-storage](https://pypi.org/project/django-cloudinary-storage/) - Cloudinary intergration.
+  - [dj-database-url](https://pypi.org/project/dj-database-url/) - Allows the use of 'DATABASE_URL' environmental variable in the Django project settings file to connect to a PostgreSQL database.
+  - [django-allauth](https://pypi.org/project/django-allauth/) - Set of Django application used for account registration, management and authentication.
+  - [dj-rest-auth](https://pypi.org/project/dj-rest-auth/) - API endpoints for handling authentication in Django Rest Framework.
+  - [django-filter](https://pypi.org/project/django-filter/) - Application that allows dynamic QuerySet filtering from URL parameters.
+  - [djangorestframework-simplejwt](https://pypi.org/project/djangorestframework-simplejwt/) - JSON Web Token authentication backend for the Django REST Framework.
+  - [django-cors-headers](https://pypi.org/project/django-cors-headers/) - Django App that adds CORS headers to responses.
+  - [gunicorn](https://pypi.org/project/gunicorn/) - Python WSGI HTTP Server.
+  - [Pillow](https://pypi.org/project/Pillow/) - Fork of PIL, the Python Imaging Library which provides image processing capabilities.
+  - [psycopg2](https://pypi.org/project/psycopg2) - Python PostgreSQL database adapter.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Programs and Tools Used
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- [drawSQL](https://drawsql.app/) - Create Database Schema/ERD
+- [GitPod](https://www.gitpod.io/)
+- [GitHub](https://github.com/)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+<hr>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Deployment
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Forking the GitHub Repository
 
-------
+By forking the GitHub Repository we make a copy of the original repository on
+our GitHub account to view and/or make changes without affecting the original
+repository by using the following steps...
 
-## FAQ about the uptime script
+1. Log in to GitHub and locate the [GitHub
+   Repository](https://github.com/niclastanskanen/project-5-api)
+1. At the top of the Repository (not top of page) just above the "Settings"
+   Button on the menu, locate the "Fork" Button.
+1. Click the button (not the number to the right) and you should now have a copy
+   of the original repository in your GitHub account.
 
-**Why have you added this script?**
+### Making a Local Clone
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+**NOTE**: It is a requirement of the project that you have Python version 3.8 or higher installed locally.
 
-**How will this affect me?**
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/niclastanskanen/project-5-api).
+1. Under the repository name, click "Code".
+1. To clone the repository using HTTPS, under "HTTPS", copy the link.
+1. Open your local terminal with git installed
+1. Change the current working directory to the location where you want the cloned directory to be created.
+1. Type `git clone`, and then paste the URL you copied in Step 3.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+    ```console
+    ~$ git clone https://github.com/niclastanskanen/project-5-api
+    ```
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+1. Press Enter. Your local clone will be created.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+    ```console
+    $ git clone https://github.com/niclastanskanen/project-5-api
+    > Cloning into `test-dir`...
+    > remote: Counting objects: 10, done.
+    > remote: Compressing objects: 100% (8/8), done.
+    > remove: Total 10 (delta 1), reused 10 (delta 1)
+    > Unpacking objects: 100% (10/10), done.
+    ```
 
-**So….?**
+    [Click here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) for a more detailed explanation of the process above with pictures.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+1. Change the current working directory to the cloned project folder (this will be a child directory in the location you cloned the project).
 
-**Can I opt out?**
+1. It is recommended to use a virtual environment during development ([learn more about virtual environments](https://realpython.com/python-virtual-environments-a-primer/)). If you would prefer not to use one please skip the following steps:
+    1. Create a virtual environment in the projects working directory by entering the following command in the same terminal window used for the steps above `python3 -m venv .venv`.
+    1. Before use, the virtual environment will need to be activated using the command `source .venv/bin/activate` in the same terminal window used previously.
+1. Packages required by the project can now using the command `pip install -r requirements.txt`
+1. In the cloned directory, rename the file `.env-example` to `.env` and populate it with the information required.
+1. Make Django migrations using the command `./manage.py migrate`.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+### Deploying with Heroku
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+**NOTE**: It is a prerequisite of deployment to Heroku that you already have access to the following:
 
-**Anything more?**
+- A Cloudinary account, create one for free at [https://cloudinary.com](https://cloudinary.com).
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+**NOTE**: It is assumed you have followed all deployment instructions listed in this readme starting with the section titled 'Forking the GitHub Repository'.
 
----
+1. Log in to [Heroku](https://www.heroku.com/) and if not taken there automatically, navigate to your personal app dashboard.
+1. At the top of the page locate the 'New' drop down, click it and then select 'Create new app'.
+1. Give your application a unique name, select a region appropriate to your location and click the 'Create app' button.
+1. Your app should now be created, so from the menu towards the top of the page select the 'Resources' section.
+1. Search for 'Heroku Postgres' under the Add-ons section and add it.
+1. From the menu towards the top of the page select the 'Settings' section and lick 'Reveal Config Vars' in the Config vars section. Enter the following key / value pairings:
+    1. Key as `ALLOWED_HOSTS` and the value as the name of you project with '.herokuapp.com' appended to the end e.g.  `example-app.herokuapp.com`. Click the Add button.
+    1. Key as `CLOUDINARY_URL` and the value as your cloudinary API Environment variable e.g. `cloudinary://**************:**************@*********`. Click the Add button.
+    1. Key as `SECRET_KEY` and the value as a complex string which will be used to provide cryptographic signing. The use of a secret key generator is recommended such as [https://djecrety.ir](https://djecrety.ir/). Click the Add button.
+    1. Ensure the key `DATABASE_URL` is already populated. This should have been created automatically by Heroku.
+    1. The `DATABASE_URL` should be copied into your local `.env`, created during the cloning process.
+    1. To make authenticated requests to this API (e.g. from a fontend application) you are required to add the key `CLIENT_ORIGIN` with the value set as the URL you will be sending the authentication request from.
+    1. Additionally, a `CLIENT_ORIGIN_DEV` key can be set with the value of a development server (IP or URL) for use during local development.
+1. Open the `.env` file in the project directory and delete the key / value pair `DEV_ENVIRONMENT_DATABASE = True` before saving the file. This can be added back after the next step to ensure local development changes will not alter the remote database.
+1. Navigate to the 'Deploy' page using the menu towards the top of the page.
+1. Select 'GitHub' from the 'Deployment method' section and you will be prompted to 'Connect to GitHub'.
+1. Once connected to your GitHub account you will be able to search for your repository which contains the forked 'property-direct-backend' repository.
+1. Once the repository is found click 'Connect'.
+1. At the bottom of the page find the section named 'Manual deploy', select the 'main' branch in the drop down and click the 'Deploy' button.
+1. Once deployment is complete, click the 'View' button to load the URL of the deployed application.
 
-Happy coding!
+<hr>
+
+## Credits
+
+### Online resources
+
+- [Django Documentation](https://docs.djangoproject.com/en/4.1/)
+- [Django REST Documentation](https://www.django-rest-framework.org/)
+- [Python Documentation](https://docs.python.org/3/)
+
+### Code
+
+- Code Institute DRF Tutorial Project
+  - CREDIT: Code Institute DRF-API Tutuorial Project
+  - URL: [https://github.com/Code-Institute-Solutions/drf-api](https://github.com/Code-Institute-Solutions/drf-api)
+
+### Acknowledgments
+
+
